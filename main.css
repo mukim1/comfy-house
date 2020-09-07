@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+/* @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
   --primaryColor: #f09d51;
@@ -17,9 +17,9 @@ body {
   color: var(--mainBlack);
   background: var(--mainWhite);
   font-family: "Lato", sans-serif;
-}
+} */
 /* --------------- Navbar ---------------- */
-.navbar {
+/* .navbar {
   position: sticky;
   top: 0;
   height: 60px;
@@ -53,7 +53,7 @@ body {
   padding: 0 5px;
   border-radius: 30%;
   color: var(--mainWhite);
-}
+} */
 /* --------------- End of Navbar ---------------- */
 /* --------------- Hero ---------------- */
 .hero {
