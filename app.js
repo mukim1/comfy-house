@@ -106,7 +106,7 @@ class UI{
         <div>
             <h4>${item.title}</h4>
             <h5>$${item.price}</h5>
-            <span class="romove-item">remove</span>
+            <span class="romove-item" data-id="${item.id}">remove</span>
         </div>
         <div>
             <i class="fas fa-chevron-up" data-id="${item.id}"></i>
@@ -134,15 +134,30 @@ class UI{
         cartDOM.classList.remove('showCart')
     }
     cartLogic(){
+        // clear cart button
         clearCartBtn.addEventListener('click', () => {
-            this.clearCart()
+            this.clearCart();
+        })
+        // Button functionality
+        cartContent.addEventListener('click', event => {
+            if(event.target.classList.contains("romove-item")){
+                let removeItem = event.target;
+                let id = removeItem.dataset.id;
+                cartContent.removeChild 
+                (removeItem.parentElement.parentElement);
+
+                this.removeItem(id);
+            }
+            else if(event.target.classList.contains("fa-chevron-up")){
+                let addAmaunt = event.target;
+                let id = addAmaunt.dataset.id
+                console.log(addAmaunt);
+            }
         })
     }
     clearCart(){
         let cartItems = cart.map(item => item.id);
         cartItems.forEach(id => this.removeItem(id));
-
-        console.log(cartContent.children);
 
         while(cartContent.children.length > 0){
             cartContent.removeChild(cartContent.children[0])
@@ -191,4 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.getBagBtns();
         ui.cartLogic();
     });
+    cartOverlay.addEventListener('click', () => {
+        cartOverlay.classList.remove('transparentBcg')
+        cartDOM.classList.remove('showCart')
+    })
 })
