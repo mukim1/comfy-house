@@ -206,8 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.getBagBtns();
         ui.cartLogic();
     });
-    cartOverlay.addEventListener('click', () => {
-        cartOverlay.classList.remove('transparentBcg')
-        cartDOM.classList.remove('showCart')
-    })
+    // cartOverlay.addEventListener('click', () => {
+    //     cartOverlay.classList.remove('transparentBcg')
+    //     cartDOM.classList.remove('showCart')
+    // })
 })
