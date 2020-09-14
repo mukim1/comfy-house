@@ -151,7 +151,23 @@ class UI{
             else if(event.target.classList.contains("fa-chevron-up")){
                 let addAmaunt = event.target;
                 let id = addAmaunt.dataset.id
-                console.log(addAmaunt);
+                let tempItem = cart.find(item => item.id===id);
+                tempItem.amaunt = tempItem.amaunt + 1;
+                storage.saveCart(cart);        
+                this.setCartValues(cart);
+                addAmaunt.nextElementSibling.innerText = tempItem.amaunt
+            }
+            else if(event.target.classList.contains("fa-chevron-down")){
+                let lowerAmaunt = event.target;
+                let id = lowerAmaunt.dataset.id;
+                let tempItem = cart.find(item => item.id === id); 
+                tempItem.amaunt = tempItem.amaunt - 1;
+                if(tempItem.amaunt > 0){
+                    storage.saveCart(cart);
+                    this.setCartValues(cart);
+                    lowerAmaunt.previousElementSibling.innerText = tempItem.amaunt
+                }
+               
             }
         })
     }
@@ -176,7 +192,7 @@ class UI{
         return buttonsDOM.find(button => button.dataset.id === id);
     }
 }
-
+    
 // LOCAL STORAGE
 class storage{
     static saveProducts(products){
@@ -186,7 +202,7 @@ class storage{
         let products = JSON.parse(localStorage.getItem("products"));
         return products.find(product => product.id === id);
     }
-    static saveCart(cart){
+    static saveCart(cart){ 
         localStorage.setItem('cart', JSON.stringify(cart))
     }
     static getCart(){
